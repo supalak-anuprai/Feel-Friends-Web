@@ -6,7 +6,7 @@ import { ShopContext } from "../../Context/ShopContext";
 function Navbar() {
   const location = useLocation();
   const [menu, setMenu] = useState("/");
-  const { getTotalCartItems } = useContext(ShopContext);
+  const { getTotalUserRegister } = useContext(ShopContext);
 
   useEffect(() => {
     setMenu(`${location.pathname.replace(/\//g, "")}`);
@@ -92,6 +92,9 @@ function Navbar() {
                 d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11c0-3.866-2.91-7-6.5-7S5 7.134 5 11v3.159c0 .538-.214 1.055-.595 1.436L3 17h5m7 0a3.5 3.5 0 11-7 0m7 0H8"
               />
             </svg>
+            <div className="badge absolute top-0 left-3 bg-red-500 text-white text-xs">
+              {getTotalUserRegister()}
+            </div>
           </div>
         </div>
       </Link>

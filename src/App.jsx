@@ -30,12 +30,9 @@ const App = () => {
             path="/notifications-register"
             element={<NotificationsMmain category="boys" />}
           />
-          <Route
-            path="/register-friends/edit"
-          >
+          <Route path="/register-friends/edit">
             <Route path=":userRegister" element={<RegisterFriend />} />
           </Route>
-          {/* <Route path="/signin" element={<SignInPage />} /> */}
           <Route
             path="/FriendsDetaile"
             element={<FriendDetailes category="FriendsDetaile" />}

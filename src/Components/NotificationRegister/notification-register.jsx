@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import DialogConfirm from "../DialogConfirm/dialog-confirm";
-import { Link } from "react-router-dom";
+import { Link, redirect } from "react-router-dom";
+import { ShopContext } from "../../Context/ShopContext";
 
 export default function NotificationRegisterFriend() {
+  const { getTotalUserRegister } = useContext(ShopContext);
   const [users, setUsers] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [dataDelete, setDataDelete] = useState(null);
@@ -13,10 +15,13 @@ export default function NotificationRegisterFriend() {
   }, [setUsers]);
 
   const handleDelete = () => {
+    getTotalUserRegister();
     let updatedUsers = users?.filter((user) => user.email !== dataDelete.email);
 
+    alert(`ลบ ${dataDelete.fullName} สําเร็จ!`);
     setUsers(updatedUsers);
     localStorage.setItem("formDataRegister", JSON.stringify(updatedUsers));
+    window.location.reload();
   };
 
   return (
