@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import { HeroSection } from "../Components/HeroSection/hero-section";
 import { Carousel } from "../Components/Corousel/corousel-Component";
 

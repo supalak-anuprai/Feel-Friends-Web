@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import friend_hero from "../Assets/friends-hero-bg.jpg";
 import { ShopContext } from "../../Context/ShopContext";
 import { useContext } from "react";
 

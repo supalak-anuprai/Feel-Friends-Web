@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { StatComponent } from "../Components/StatComponent/stat";
-import { Breadcrumbs } from "../Components/Breadcrumbs/breadcrumb";
 import { CountDownComponent } from "../Components/CountDown/countDownComponent";
 import FriendProfiled from "../Components/CardFriendProfiled/FriendProfiled";
 

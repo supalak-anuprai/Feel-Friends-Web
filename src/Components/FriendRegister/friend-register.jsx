@@ -1,13 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 export default function FriendRegister({ userCurrent }) {
-  const defultValues = {
-    fullName: "",
-    email: "",
-    password: "",
-    gender: "",
-    agree: false,
-  };
+  const defultValues = useMemo(
+    () => ({
+      fullName: "",
+      email: "",
+      password: "",
+      gender: "",
+      agree: false,
+    }),
+    []
+  ); // ใช้ [] เพื่อให้ค่า defultValues ถูกสร้างเพียงครั้งเดียว
 
   const [formData, setFormData] = useState(defultValues);
 
@@ -23,7 +26,7 @@ export default function FriendRegister({ userCurrent }) {
     } else {
       setFormData(defultValues);
     }
-  }, [userCurrent]);
+  }, [userCurrent, defultValues, setFormData]);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;

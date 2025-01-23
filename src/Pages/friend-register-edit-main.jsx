@@ -16,7 +16,7 @@ export default function RegisterFriend() {
     } else {
       setUserRegisCurrent(null);
     }
-  }, []);
+  }, [userRegister]);
 
   return (
     <div>

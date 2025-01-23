@@ -1,16 +1,13 @@
-import React, { createContext, useEffect, useState } from "react";
-import axios from "axios";
-import all_product from "../Components/Assets/all_product";
+import { useCallback, useMemo } from "react";
+import { ShopContext } from "./ShopContext";
 
-export const ShopContext = createContext(null);
-
-const ShopContextProvider = (props) => {
-  const getTotalUserRegister = () => {
+export const ShopContextProvider = (props) => {
+  const getTotalUserRegister = useCallback(() => {
     const user = JSON.parse(localStorage.getItem("formDataRegister"));
     return user ? user.length : 0;
-  };
+  }, []);
 
-  const scrollToTop = () => {
+  const scrollToTop = useCallback(() => {
     const scrollToTopAnimation = () => {
       const currentPosition = window.scrollY;
 
@@ -20,18 +17,18 @@ const ShopContextProvider = (props) => {
       }
     };
     requestAnimationFrame(scrollToTopAnimation);
-  };
-  
-  const contextValue = {
-    scrollToTop,
-    getTotalUserRegister,
-  };
+  }, []);
 
+  const contextValue = useMemo(
+    () => ({
+      scrollToTop,
+      getTotalUserRegister,
+    }),
+    [scrollToTop, getTotalUserRegister]
+  );
   return (
     <ShopContext.Provider value={contextValue}>
       {props.children}
     </ShopContext.Provider>
   );
 };
-
-export default ShopContextProvider;

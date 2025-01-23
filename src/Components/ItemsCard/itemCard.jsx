@@ -1,6 +1,6 @@
 import { useCallback, useContext } from "react";
-import { ShopContext } from "../../Context/ShopContext";
 import { Link } from "react-router-dom";
+import { ShopContext } from "../../Context/ShopContext";
 
 export const ItemCard = ({ data }) => {
   const { scrollToTop } = useContext(ShopContext);

@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export default function FriendProfiled({ data }) {
   console.log("🚀 ~ FriendProfiled ~ data:", data);
   return (
@@ -38,3 +40,7 @@ export default function FriendProfiled({ data }) {
     </div>
   );
 }
+
+FriendProfiled.propTypes = {
+  data: PropTypes.object,
+};

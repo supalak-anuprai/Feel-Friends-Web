@@ -18,7 +18,7 @@ export const Carousel = () => {
   const width = window.innerWidth;
 
   // ใช้ useSprings เพื่อทำให้การแอนิเมชันตำแหน่ง x ถูกปรับตาม index.current
-  const [props, api] = useSprings(pages.length, (i) => ({
+  const [props, api] = useSprings(pages?.length, (i) => ({
     x: (i - index.current) * width, // คำนวณตำแหน่ง x ใหม่ตาม index
     scale: 1,
     display: "block",
@@ -29,7 +29,7 @@ export const Carousel = () => {
     if (isDragging) return; // ถ้ามีการลากอยู่จะไม่ให้เลื่อนอัตโนมัติ
 
     const interval = setInterval(() => {
-      index.current = (index.current + 1) % pages.length; // เลื่อนไปข้างหน้าและวนรอบ
+      index.current = (index.current + 1) % pages?.length; // เลื่อนไปข้างหน้าและวนรอบ
       api.start((i) => {
         // คำนวณตำแหน่ง x ใหม่สำหรับภาพที่ถูกต้อง
         const x = (i - index.current) * width;
@@ -44,7 +44,7 @@ export const Carousel = () => {
     }, 5000); // ทุก 5 วินาที
 
     return () => clearInterval(interval); // ทำลายการตั้งเวลาเมื่อคอมโพเนนต์ถูกยกเลิก
-  }, [isDragging, api, width]);
+  }, [isDragging, api, width, pages?.length]);
 
   // ฟังก์ชันการลาก
   const bind = useDrag(
@@ -81,7 +81,7 @@ export const Carousel = () => {
   return (
     <div className="flex justify-center items-center w-full h-screen">
       <div className="relative w-full h-full overflow-hidden">
-        {props.map(({ x, display, scale }, i) => (
+        {props?.map(({ x, display, scale }, i) => (
           <animated.div
             className="absolute w-full h-full touch-none"
             {...bind()}

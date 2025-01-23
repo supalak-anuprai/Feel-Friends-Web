@@ -1,6 +1,6 @@
-import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { ShopContext } from "../../Context/ShopContext";
+import { useContext } from "react";
 
 export default function NotData({ page }) {
   const { scrollToTop } = useContext(ShopContext);
